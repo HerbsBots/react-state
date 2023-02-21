@@ -1,0 +1,45 @@
+
+.box 
+{
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 10px;
+  max-width: 300px;
+  padding: 25px 35px;
+  border-radius: 40px;
+  background-color: #964b0071;
+  box-shadow: 0 15px 15px 15px #b2ac88;
+}
+
+
+.profile-image
+{
+  padding: 10px;
+
+}
+
+
+img 
+{
+  border-radius: 15px;
+  width: 200px;
+}
+
+
+.btn
+{
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 15px;
+  color: #D0C4AB;
+  background-color: #5f9ea0;
+  outline: none;
+  padding: 0.5rem 1.8rem;
+  box-shadow: 0 0.3rem #964B00;
+}
+
+
