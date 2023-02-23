@@ -1,68 +1,63 @@
 import React, { Component } from 'react';
-import './App.css';
-import hoops from './images/hoops.jpg';
+import hoops from './images/hoops.jpg'
+import './App.css'
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    person: {
+      fullName: 'Taiwo Bandipo',
+      bio: 'GoMyCode',
+      imgSrc: 'hoops.jpg',
+      profession: 'Web Developer'
+    },
+    shows: false,
+    timeInterval: 0
+  };
 
-      this.state = {
-        person: {
-          fullName: 'Taiwo Bandipo',
-          imgSrc: 'hoops.jpg',
-          bio: 'GoMyCode',
-          profession: 'Web Developer',
-          intervalId: null,
-          timeInterval: 0,
-        },
-        shows: false,
-      };
-    }
-  
-    componentDidMount() {
-      const intervalId = setInterval(() => {
-        this.setState((prevState) => ({ timeInterval: prevState.timeInterval + 1 }));
-      }, 1000);
-  
-      this.setState({ setInterval });
-    }
-  
-    componentWillUnmount() {
-      clearInterval(this.state.intervalId);
-    }
+  componentDidMount() {
+    this.intervalId = setInterval(() => {
+      this.setState(prevState => ({
+        timeInterval: prevState.timeInterval + 1
+      }));
+    }, 1000);
+  }
 
-    toggleShows = () => {
-      this.setState((prevState) => ({ shows: !prevState.shows }));
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
 
-    };
+  handleToggle = () => {
+    this.setState(prevState => ({
+      shows: !prevState.shows
+    }));
+  };
 
-    render() {
-      const { fullName, bio, imgSrc, profession } = this.state.person;
-      const { shows } = this.state;
-  
+  render() {
+    const { person, shows, timeInterval } = this.state;
+
     return (
       <div className='App'>
-        <div className='box'>      
-          {shows && (
+        <div className='box'>
+        <h1>Person Information</h1>
+        {shows && (
           <div>
-              <div className='profile-image'>
-                <img src={hoops} alt={fullName} width={200} height={300} />
-              </div>       
-                <h1>{fullName}</h1>
-                <p>{profession}</p>
-                <p>{bio}</p>
+            <div className='profile-image'>
+             <img src={hoops} alt={person.fullName} />
+            </div>
+            <h2>{person.fullName}</h2>
+            <p>{person.bio}</p>
+            <p>{person.profession}</p>
           </div>
-          )}
-          <button onClick={this.toggleShows} className="btn">
-            {shows ? 'Hide' : 'Show'} Profile
-          </button>
-          </div>
+        )}
+        <p>Time interval: {timeInterval} seconds</p>
+        <button onClick={this.handleToggle}>
+        </button>
+
       </div>
-      );
-    }
+    </div>
+    );
   }
-  
-  export default App;
+}
 
-  
-
+export default App;
